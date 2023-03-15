@@ -14,7 +14,7 @@ export default function BoardOfShame() {
   const [activeShameSorter, setActiveShameSorter] = useState("sessions");
 
   const sortedUsers = Object.entries(users).filter(
-    (user) => user[1].sessions > 1
+    (user) => Date.now() - user[1].oldestSession >= 1000 * 60 * 60 * 24
   );
   sortedUsers.sort(shameSorters[activeShameSorter]);
 
@@ -68,6 +68,7 @@ export default function BoardOfShame() {
           <th className="border border-slate-500">CPU</th>
           <th className="border border-slate-500">Memory</th>
           <th className="border border-slate-500">Sessions</th>
+          <th className="border border-slate-500">Oldest Session</th>
         </thead>
         <tbody>
           {sortedUsers.map(([username, data]) => (
@@ -86,6 +87,9 @@ export default function BoardOfShame() {
                 {(data.accMemory / 1000000).toFixed(4)}
               </td>
               <td className="border border-slate-500 px-1">{data.sessions}</td>
+              <td className="border border-slate-500 px-1">
+                {new Date(data.oldestSession).toLocaleDateString()}
+              </td>
             </tr>
           ))}
         </tbody>
