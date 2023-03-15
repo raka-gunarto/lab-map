@@ -4,12 +4,15 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ProvideSchema } from "./providers";
+import { ProvideData } from "./providers/DataProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <ProvideSchema>
-      <App />
+      <ProvideData>
+        <App />
+      </ProvideData>
     </ProvideSchema>
   </React.StrictMode>
 );

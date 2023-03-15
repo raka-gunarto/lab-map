@@ -1,5 +1,5 @@
 import { React, createContext, useContext, useState } from "react";
-import defaultschema from '../defaultschema.json'
+import defaultschema from "../defaultschema.json";
 
 const schemaContext = createContext();
 export function ProvideSchema({ children }) {
@@ -14,7 +14,9 @@ function useProvideSchema() {
   const [_activeSchema, setActiveSchema] = useState(null);
 
   const downloadSchemas = () => {
-    const blob = new Blob([JSON.stringify(schemas)], { type: "application/json" });
+    const blob = new Blob([JSON.stringify(schemas)], {
+      type: "application/json",
+    });
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
@@ -27,13 +29,21 @@ function useProvideSchema() {
   const newSchema = () => {
     setSchemas((old) => {
       setActiveSchema(old.length);
-      return [...old, { name: "New Schema", rows: 5, columns: 5, computers: {1: {3: {hostname: "comp-pc-test"}}} }];
+      return [
+        ...old,
+        {
+          name: "New Schema",
+          rows: 5,
+          columns: 5,
+          computers: { 1: { 3: { hostname: "comp-pc-test" } } },
+        },
+      ];
     });
   };
 
   const updateActiveSchema = (data) => {
     setSchemas((old) => {
-      console.log(data)
+      console.log(data);
       let n = [...old];
       n[_activeSchema] = data;
       return n;
@@ -48,6 +58,7 @@ function useProvideSchema() {
     downloadSchemas,
     newSchema,
     updateActiveSchema,
-    setActiveSchema
+    setActiveSchema,
+    setSchemas,
   };
 }
