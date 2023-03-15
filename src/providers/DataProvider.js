@@ -64,6 +64,6 @@ function useProvideData() {
     users,
     computers,
     focus,
-    setFocus
+    setFocus,
   };
 }

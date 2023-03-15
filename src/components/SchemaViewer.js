@@ -45,7 +45,7 @@ const GridElement = ({ type, data, gradient, computers }) => {
 
 export default function SchemaViewer() {
   const { activeSchema } = useSchema();
-  const { computers, focus } = useData();
+  const { computers } = useData();
 
   const maxComputers = Math.max(
     ...Object.values(computers).map((c) => c.users.length)

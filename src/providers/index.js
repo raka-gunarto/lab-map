@@ -1,1 +1,1 @@
-export {ProvideSchema, useSchema} from './SchemaProvider'
+export { ProvideSchema, useSchema } from "./SchemaProvider";
