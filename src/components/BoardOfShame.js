@@ -7,6 +7,7 @@ const shameSorters = {
   cpu: (a, b) => b[1].accCPUPercentage - a[1].accCPUPercentage,
   mem: (a, b) => b[1].accMemory - a[1].accMemory,
   sessions: (a, b) => b[1].sessions - a[1].sessions,
+  oldestSession: (a, b) => a[1].oldestSession - b[1].oldestSession,
 };
 
 export default function BoardOfShame() {
@@ -60,6 +61,16 @@ export default function BoardOfShame() {
           onClick={() => setActiveShameSorter("sessions")}
         >
           Top Sessions
+        </div>
+        <div
+          role="button"
+          className={clsx(
+            "rounded-md border-2 border-orange-700 px-2 py-1 hover:bg-orange-700",
+            activeShameSorter === "oldestSession" && "bg-orange-700"
+          )}
+          onClick={() => setActiveShameSorter("oldestSession")}
+        >
+          Oldest Session
         </div>
       </div>
       <table className="table-auto border-collapse border border-slate-500">
