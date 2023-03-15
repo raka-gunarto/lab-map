@@ -42,7 +42,7 @@ const GridElement = ({ type, data, gradient, computers }) => {
         </div>
       )}
       {type === "computer" && computers[data.hostname] && (
-        <div className="absolute -top-3 -right-4 z-10 rounded-full bg-orange-400 p-2 text-white">
+        <div className="absolute -top-3 -right-4 z-10 rounded-full bg-orange-400 px-2 text-white">
           💀:{" "}
           {
             computers[data.hostname].sessions.filter(
