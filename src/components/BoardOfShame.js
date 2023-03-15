@@ -19,7 +19,7 @@ export default function BoardOfShame() {
   sortedUsers.sort(shameSorters[activeShameSorter]);
 
   return (
-    <div className="flex flex-col space-y-2 p-8 text-white">
+    <div className="sticky top-0 flex h-min flex-col space-y-2 p-8 text-white">
       <h2
         className="relative h-min w-full pt-12 pb-2 text-center text-lg font-bold text-black"
         style={{
