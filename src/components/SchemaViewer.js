@@ -43,13 +43,13 @@ const GridElement = ({ type, data, gradient, computers }) => {
       )}
       {type === "computer" && computers[data.hostname] && (
         <div className="absolute -top-3 -right-4 z-10 rounded-full bg-orange-400 px-2 text-white">
-          💀:{" "}
           {
             computers[data.hostname].sessions.filter(
               (sess) =>
                 Date.now() - Date.parse(sess.date) >= 1000 * 60 * 60 * 24
             ).length
-          }
+          }{" "}
+          x 💀
         </div>
       )}
     </div>
