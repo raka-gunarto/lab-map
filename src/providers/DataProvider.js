@@ -17,7 +17,7 @@ function useProvideData() {
     let newComputers = {};
     let newUsers = Object.entries(data["who"]).reduce((acc, entry) => {
       const [computer, wholist] = entry;
-      newComputers[computer] = { users: [] };
+      newComputers[computer] = { users: [], sessions: []};
       for (let who of wholist) {
         const username = who.split(/\s+/)[0].split("@")[0];
         const term = who.split(/\s+/)[1];
@@ -27,6 +27,7 @@ function useProvideData() {
           continue;
 
         newComputers[computer].users.push(username);
+        newComputers[computer].sessions.push({username, date});
         if (!acc[username])
           acc[username] = {
             sessions: 0,

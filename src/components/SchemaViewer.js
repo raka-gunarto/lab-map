@@ -34,8 +34,10 @@ const GridElement = ({ type, data, gradient, computers }) => {
       )}
       {hover && type === "computer" && computers[data.hostname] && (
         <div className="absolute z-10 rounded-md bg-orange-400 p-2 text-white">
-          {computers[data.hostname].users.map((user) => (
-            <p key={user}>{user}</p>
+          {computers[data.hostname].sessions.map((sess, idx) => (
+            <p key={idx}>
+              User: {sess.username} Date: {sess.date}
+            </p>
           ))}
         </div>
       )}
