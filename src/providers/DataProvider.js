@@ -21,7 +21,7 @@ function useProvideData() {
       for (let who of wholist) {
         const username = who.split(/\s+/)[0].split("@")[0];
         const term = who.split(/\s+/)[1];
-        const date = who.split(/\s+/)[2];
+        const date = who.split(/\s+/)[2] + ' ' + who.split(/\s+/)[3];
         if (!(term.startsWith(":") || term.startsWith("tty")))
           // only count physical sessions
           continue;
